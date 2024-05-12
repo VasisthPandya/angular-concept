@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()" class="d-flex">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="p-2">Angular Portfolio</span>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" mode="side">
+      <!-- Sidenav content -->
+      <div
+        *ngFor="let item of sidenavList" class="sidenav-items" [routerLink]='item?.route' routerLinkActive="selected" 
+      >
+        <div class="d-flex align-items-center gap-3 px-4 py-2">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <p class="m-0">{{ item.title }}</p>
+        </div>
+        <hr class="m-0"/>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content autosize>
+      <!-- Main content -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

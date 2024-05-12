@@ -1,0 +1,15 @@
+.sidenav-container {
+  height: 90vh;
+}
+
+.sidenav-items {
+  cursor: pointer;
+  & :hover {
+    background-color: #d8d9da;
+    color: black;
+  }
+}
+.selected {
+    background-color: #d8d9da;
+    color: black;
+}
