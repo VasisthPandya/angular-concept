@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FormsValidationRoutingModule } from './forms-validation-routing.module';
 import { FormsValidationComponent } from './forms-validation.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import { FormsValidationComponent } from './forms-validation.component';
   ],
   imports: [
     CommonModule,
-    FormsValidationRoutingModule
+    FormsValidationRoutingModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class FormsValidationModule { }

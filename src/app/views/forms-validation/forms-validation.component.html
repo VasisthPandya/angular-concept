@@ -1,1 +1,91 @@
-<p>forms-validation works!</p>
+<!-- app.component.html -->
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" formControlName="firstName" />
+    <div
+      *ngIf="
+        registerForm.get('firstName')?.invalid &&
+        (registerForm.get('firstName')?.dirty ||
+          registerForm.get('firstName')?.touched)
+      "
+    >
+      <div *ngIf="firstName?.errors?.['required']" class="invalid-feedback">
+        First Name is required.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" formControlName="lastName" />
+    <div
+      *ngIf="
+        registerForm.get('lastName')?.invalid &&
+        (registerForm.get('lastName')?.dirty ||
+          registerForm.get('lastName')?.touched)
+      "
+    >
+      <div *ngIf="lastName?.errors?.['required']">
+        Last Name is required.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="mobile">Mobile</label>
+    <input type="text" id="mobile" formControlName="mobile" />
+    <div
+      *ngIf="
+        registerForm.get('mobile')?.invalid &&
+        (registerForm.get('mobile')?.dirty || registerForm.get('mobile')?.touched)
+      "
+    >
+      <div *ngIf="mobile?.errors?.['required']">
+        Mobile is required.
+      </div>
+      <div *ngIf="mobile?.errors?.['pattern']">
+        Please enter a valid mobile number.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" />
+    <div
+      *ngIf="
+        registerForm.get('email')?.invalid &&
+        (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)
+      "
+    >
+      <div *ngIf="mobile?.errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="mobile?.errors?.['email']">
+        Please enter a valid email.
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password" />
+    <div
+      *ngIf="
+        registerForm.get('password')?.invalid &&
+        (registerForm.get('password')?.dirty ||
+          registerForm.get('password')?.touched)
+      "
+    >
+      <div *ngIf="password?.errors?.['required']">
+        Password is required.
+      </div>
+      <div *ngIf="password?.errors?.['minLength']">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!registerForm.valid">Register</button>
+</form>
